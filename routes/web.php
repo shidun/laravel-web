@@ -82,6 +82,9 @@ Route::group(['middleware' => 'auth:web'], function(){
 
 	//文章取消点赞
 	Route::get('/posts/{post}/unzan', '\App\Http\Controllers\PostController@unzan');
+
+	//通知
+	Route::get('/notices', '\App\Http\Controllers\NoticeController@index');
 });
 
 include_once('admin.php');

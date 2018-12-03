@@ -77,7 +77,11 @@ class PostController extends Controller
         
         \Log::info("post_index3", ['data' => '33333']);//使用门脸使用log
 
+        //预加载user 不在页面上访问数据库 ->with('user')
+        // $posts = Post::orderBy('created_at', 'desc')->withCount(['comments', 'zans'])->with('user')->paginate(6);
         $posts = Post::orderBy('created_at', 'desc')->withCount(['comments', 'zans'])->paginate(6);
+        $posts->load('user');
+        // dd($posts);
         return view('post/index', compact('posts'));
     }
 

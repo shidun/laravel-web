@@ -40,7 +40,7 @@
 
                         {!! str_limit($post->content, 200, '...') !!}
                         <p class="blog-post-meta">赞 {{ $post->zans_count }}  | 评论 {{ $post->comments_count }}</p>
-                    </div>
+                    </div> 
                 @endforeach
                 {{ $posts->links() }}
 

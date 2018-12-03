@@ -9,6 +9,18 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    //用户收到的通知
+    public function notices()
+    {
+        return $this->belongsToMany(\App\Notice::class, 'user_notice', 'user_id', 'notice_id')->withPivot(['user_id', 'notice_id']);
+    }
+
+    //给用户增加通知
+    public function addNotice($notice)
+    {
+        return $this->notices()->save($notice); //删除用detach
+    }
+
     //用户文章列表
     public function posts()
     {
